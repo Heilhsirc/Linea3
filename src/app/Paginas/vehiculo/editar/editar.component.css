@@ -1,0 +1,119 @@
+*,::after,::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form {
+  text-align: left;
+  background:white;
+  margin: auto;
+  box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 7px;
+  
+}
+
+form .text{
+  position: relative;
+  margin: 25px;
+}
+
+
+form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  text-align: center;
+
+}
+
+input{
+  background: none;
+  color: #c6c6c6;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #49454567;
+}
+
+input::placeholder{
+  color: transparent;
+}
+
+input:focus{
+  outline: none;
+  color: #E63E1A;
+  border-bottom: 1px solid #E63E1A;
+}
+
+input:focus::placeholder{
+  color: #c6c6c6;
+}
+
+label{
+  color: #49454567;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  transition: 0.5s ease-in-out all;
+  pointer-events: none;
+
+}
+
+input:focus~label,
+input:valid~label{
+  top: -14px;
+  font-size: 12px;
+  color: #E63E1A;
+}
+
+
+h1{
+  position: relative;
+  top: 10px;
+  color: #E63E1A;
+  margin-bottom: 50px;
+  letter-spacing: 2px;
+}
+
+select{
+  color: #49454567;
+  width: 100%;
+  border: 0;
+  box-shadow: 0px 10px 25px rgb(0 0 0 / 20%);
+  font-size: 18px;
+  padding: 1px 12.5px;
+  appearance: none;
+}
+
+select:focus{
+  color: #E63E1A;
+  outline-color: #E63E1A;
+}
+
+button{
+  width: 100%;
+  border-radius: 10px;
+  background: #E63E1A;
+  height: 30px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 2px;
+}
+
+button:disabled{
+  background: #533b36;
+}
+
+button:hover:enabled{
+  cursor: pointer;
+  background: #c09a92;
+}
+input.ng-valid~label{
+  top: -14px;
+  font-size: 12px;
+  color: #E63E1A;
+}

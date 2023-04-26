@@ -1,0 +1,69 @@
+<div [hidden]="route.children.length !== 0 " class="mat-elevation-z8">
+  <!----><mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+    <table mat-table [dataSource]="dataSource">
+  
+      <ng-container matColumnDef="Placa">
+        <th mat-header-cell *matHeaderCellDef> Placa </th>
+        <td mat-cell *matCellDef="let element"> {{element.placa}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Modelo">
+        <th mat-header-cell *matHeaderCellDef> Modelo </th>
+        <td mat-cell *matCellDef="let element"> {{element.modelo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Marca">
+        <th mat-header-cell *matHeaderCellDef> Marca </th>
+        <td mat-cell *matCellDef="let element"> {{element.marca}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipoVehiuclo">
+        <th mat-header-cell *matHeaderCellDef> Tipo Vehiculo </th>
+        <td mat-cell *matCellDef="let element"> {{element.tipoVehiuclo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Capacidad">
+        <th mat-header-cell *matHeaderCellDef> Capacidad </th>
+        <td mat-cell *matCellDef="let element"> {{element.capacidad}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Editar">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button [routerLink]="['/Vehiculos/Editar',element.idVehiculo]" ><mat-icon>edit</mat-icon>Editar</button></td>
+      </ng-container>
+
+      <ng-container matColumnDef="Asociar">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="openDialog(element.idVehiculo)" ><mat-icon>assignment_ind</mat-icon>Asociar</button></td>
+      </ng-container>
+
+      <ng-container matColumnDef="Asociados">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="openDialog2(element.idVehiculo)"><mat-icon>supervisor_account</mat-icon>Ver Asociados</button></td>
+      </ng-container>
+
+      <ng-container matColumnDef="NoAsociados">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="openDialog3(element.idVehiculo)"><mat-icon>supervisor_account</mat-icon>Ver No Asociados</button></td>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+   
+    <div id="Agregar">
+      <button mat-stroked-button [routerLink]="['/Registrar']">Agregar</button>
+    </div>
+      <mat-paginator [pageSize]="pageSize" [length]="cantidad" [pageSizeOptions]="[5, 10, 25, 100]" #VehiculoPaginator 
+      (page)="cambioPagina($event)"></mat-paginator>
+  </div>
+
+
+  <router-outlet></router-outlet>

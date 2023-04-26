@@ -1,0 +1,67 @@
+<div [hidden]="route.children.length !== 0 " class="mat-elevation-z8">
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+      <table mat-table [dataSource]="dataSource">
+    
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="apellido">
+          <th mat-header-cell *matHeaderCellDef> Apellido </th>
+          <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="cedula">
+          <th mat-header-cell *matHeaderCellDef> Cedula </th>
+          <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef> Estado </th>
+          <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="direccion">
+          <th mat-header-cell *matHeaderCellDef> Direccion </th>
+          <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cargo">
+          <th mat-header-cell *matHeaderCellDef> Cargo </th>
+          <td mat-cell *matCellDef="let element"> {{element.cargo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="celular">
+          <th mat-header-cell *matHeaderCellDef> Celular </th>
+          <td mat-cell *matCellDef="let element"> {{element.celular}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="Editar">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button [routerLink]="['/Conductores/EditarConductor',element.idUsuario]" ><mat-icon>edit</mat-icon></button></td>
+        </ng-container>
+
+        <ng-container matColumnDef="Eliminar">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button (click)="eliminar(element.idUsuario)" ><mat-icon>delete</mat-icon></button></td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+     
+      <div id="Agregar">
+        <button mat-stroked-button [routerLink]="['/RegistrarConductor']" >Agregar</button>
+      </div>
+        <mat-paginator [pageSize]="pageSize" [length]="cantidad" [pageSizeOptions]="[5, 10, 25, 100]" #VehiculoPaginator 
+        (page)="cambioPagina($event)"></mat-paginator>
+    </div>
+  
+  
+    <router-outlet></router-outlet>

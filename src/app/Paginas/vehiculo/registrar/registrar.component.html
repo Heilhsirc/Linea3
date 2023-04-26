@@ -1,0 +1,91 @@
+<form [formGroup]="registrarForm" (submit)="send()" errorTailor>
+    <div class="form">
+        <h1>█&nbsp;&nbsp;REGISTRO</h1>
+        <!--///////////////INPUT PLACA///////////////////-->
+        <div class="text">
+            <input type="text" id="placa" formControlName="placa" placeholder="abc-123" [controlErrorsTpl]="txtUserError" required autocomplete="off">  
+            <ng-container *ngTemplateOutlet="txtUserError;context:{error:registrarForm.get('placa').errors}"></ng-container>
+            <label for="placa">Placa</label>
+        </div>
+
+        <!--///////////////INPUT MODELO///////////////////-->
+        <div class="text">
+            <input type="text" id="modelo" formControlName="modelo" placeholder="2001" [controlErrorsTpl]="txtModeloError" required autocomplete="off">
+            <ng-container *ngTemplateOutlet="txtModeloError;context:{error:registrarForm.get('modelo').errors}"></ng-container>
+            <label for="modelo">Modelo</label>
+        </div>
+
+        <!--///////////////INPUT MARCA///////////////////-->
+        <div class="text">
+            <select  name="marca" readonly id="marca" required formControlName="marca">
+                    <option value="" disabled>Marca</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Reanult">Reanult</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="Mercedez">Mercedez</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Alfa Romero">Alfa Romero</option>
+                    <option value="Audi">Audi</option>
+                    <option value="Ferrari">Ferrari</option>
+                    <option value="Peugeot">Peugeot</option>
+                    <option value="Porche">Porche</option>
+            </select>
+
+            
+            <!--<input type="text" id="marca" formControlName="marca" required autocomplete="off">-->
+            
+        </div>
+
+        <!--///////////////INPUT TIPO VEHICULO///////////////////-->
+        <div class="text">
+            <!--<input type="text" id="tipoVehiculo" formControlName="tipoVehiculo" required autocomplete="off">
+            <label for="tipoVehiculo">Tipo Vehiculo</label>-->
+            <select name="tipoVehiculo" id="tipoVehiculo" required formControlName="tipoVehiculo">
+            <option value="" disabled>Tipo de Vehiculo</option>
+            <option value="Carro">Carro</option>
+            <option value="Camioneta">Camioneta</option>
+            <option value="Furgon">Furgon</option>
+            <option value="Campero">Campero</option>
+        </select>
+        </div>
+
+        <!--///////////////INPUT CAPACIDAD///////////////////-->
+        <div class="text">
+            <input type="text" id="capacidad" formControlName="capacidad" placeholder="50Kg" required autocomplete="off">
+            <label for="capacidad">Capacidad</label>
+        </div>
+
+        <div class="text">
+            <button [disabled]="registrarForm.invalid">REGISTRAR</button>
+        </div>
+    </div>
+</form>
+
+<ng-template let-error="error" #txtUserError>
+    <!--{{error | json}}-->
+    <div *ngIf="error?.required&&registrarForm.touched">
+        <b>Error</b>
+        <i>Este campo es requerido</i>
+    </div>
+    <div *ngIf="error?.pattern">
+        <b>Error</b>
+        <i>La placa debe llevar -</i>
+    </div>
+</ng-template>
+
+<ng-template let-error="error" #txtModeloError>
+    <!--{{error | json}}-->
+    <div *ngIf="error?.minlength">
+        <b>Error</b>
+        <i>Se esperan minimo 4 numeros</i>
+    </div>
+    <div *ngIf="error?.required&&registrarForm.touched">
+        <b>Error</b>
+        <i>Este campo es requerido</i>
+    </div>
+    <div *ngIf="error?.pattern">
+        <b>Error</b>
+        <i>Se aceptan unicamente numeros</i>
+    </div>
+</ng-template>

@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+  }
+   td button{
+    background-color: transparent;
+    border: none;
+    color: black;
+    font: size 80px; 
+  }
+  td button:hover{
+      cursor: pointer;
+      background: whitesmoke;
+
+  }
