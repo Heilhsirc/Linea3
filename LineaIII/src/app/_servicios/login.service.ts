@@ -8,7 +8,7 @@ import { Security } from '../Modelos/security';
 })
 export class LoginService {
 
-  private url: string = 'https://localhost:7033/api/Login/Login';
+  private url: string = 'https://localhost:7033/api/Login/';
   private url2: String = 'https://localhost:7033/api/Authentication/Auth'
 
   constructor(private http: HttpClient) { }
@@ -19,7 +19,7 @@ export class LoginService {
       "password": "${password}",
       "nombre": "",
       "email": ""}`;
-    return this.http.post<Usuario>(`${this.url}`, body, {
+    return this.http.post<Usuario>(`${this.url}Login`, body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8') 
     });
 }
@@ -32,5 +32,22 @@ export class LoginService {
     return this.http.post<any>(`${this.url2}`, body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8') 
     });
+  }
+
+  public close(){
+    const body = `{
+      "id": ${sessionStorage.getItem('Id')},
+      "username": "",
+      "password": "",
+      "nombre": "",
+      "email": ""}`;
+    return this.http.post<any>(`${this.url}Close`, body, {
+        headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8') 
+    });
+  }
+
+  public estaLogueado(): boolean{
+    const tk = sessionStorage.getItem('Token');
+    return !!tk;
   }
 }

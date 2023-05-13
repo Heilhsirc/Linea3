@@ -1,88 +1,88 @@
 <div class="example-container">
-    <div >
-    <mat-toolbar color="primary">
+  <div [hidden]= "!logeado">
+  <mat-toolbar color="primary">
+    <button
+      mat-icon-button
+      class="example-icon"
+      (click)="drawer.toggle()"
+      style="cursor: pointer"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon *ngIf="!drawer.opened">menu</mat-icon>
+      <mat-icon *ngIf="drawer.opened">close</mat-icon>
+    </button>
+    <span>Servienvios</span>
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/perfil']">
+        <mat-icon>account_box</mat-icon>
+        <span>Mi Perfil</span>
+      </button>
+      <button mat-menu-item (click)="close()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+</div>
+  <mat-drawer-container class="example-sidenav-content" autosize>
+    <div [hidden] = "flagProgresBar" class="loader">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <mat-drawer #drawer style="width: 200px" mode="side">
+      <div *ngIf="rol == 'Administrador'">
       <button
-        mat-icon-button
-        class="example-icon"
+        mat-menu-item
         (click)="drawer.toggle()"
         style="cursor: pointer"
-        aria-label="Example icon-button with menu icon"
+        [routerLink]="['/Departamentos']"
       >
-        <mat-icon *ngIf="!drawer.opened">menu</mat-icon>
-        <mat-icon *ngIf="drawer.opened">close</mat-icon>
+        <mat-icon>account_balance</mat-icon>
+        <span>Departamentos</span>
       </button>
-      <span>TheSchool</span>
-      <span class="example-spacer"></span>
-  
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-  
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item [routerLink]="['/perfil']">
-          <mat-icon>account_box</mat-icon>
-          <span>Mi Perfil</span>
-        </button>
-        <button mat-menu-item (click)="close()">
-          <mat-icon>exit_to_app</mat-icon>
-          <span>Cerrar Sesión</span>
-        </button>
-      </mat-menu>
-    </mat-toolbar>
+    </div>
+    <div *ngIf="rol == 'Administrador'">
+      <button
+      mat-menu-item
+      (click)="drawer.toggle()"
+      style="cursor: pointer"
+      [routerLink]="['/Vehiculos']"
+    >
+      <mat-icon>directions_car</mat-icon>
+      <span>Vehiculos</span>
+    </button>
   </div>
-    <mat-drawer-container class="example-sidenav-content" autosize>
-      <div>
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-      </div>
-      <mat-drawer #drawer style="width: 200px" mode="side">
-        <div *ngIf="rol == '1'">
-        <button
-          mat-menu-item
-          (click)="drawer.toggle()"
-          style="cursor: pointer"
-          [routerLink]="['/Departamentos']"
-        >
-          <mat-icon>account_balance</mat-icon>
-          <span>Departamentos</span>
-        </button>
-      </div>
-      <div *ngIf="rol == '1'">
-        <button
-        mat-menu-item
-        (click)="drawer.toggle()"
-        style="cursor: pointer"
-        [routerLink]="['/Vehiculos']"
-      >
-        <mat-icon>directions_car</mat-icon>
-        <span>Vehiculos</span>
-      </button>
-    </div>
-    <div *ngIf="rol == '1'">
-      <button
-        mat-menu-item
-        (click)="drawer.toggle()"
-        style="cursor: pointer"
-        [routerLink]="['/Conductores']"
-      >
-        <mat-icon>assignment_ind</mat-icon>
-        <span>Conductores</span>
-      </button>
-    </div>
-  
-    <div *ngIf= "rol == '2'">
-      <button
-        mat-menu-item
-        (click)="drawer.toggle()"
-        style="cursor: pointer"
-        [routerLink]="['/Pedidos']"
-      >
-        <mat-icon>directions_car</mat-icon>
-        <span>Pedidos</span>
-      </button>
-    </div>
-      </mat-drawer>
-      <div class="example-sidenav">
-        <router-outlet visivility> </router-outlet>
-      </div>
-    </mat-drawer-container>
+  <div *ngIf="rol == 'Administrador'">
+    <button
+      mat-menu-item
+      (click)="drawer.toggle()"
+      style="cursor: pointer"
+      [routerLink]="['/Conductores']"
+    >
+      <mat-icon>assignment_ind</mat-icon>
+      <span>Conductores</span>
+    </button>
   </div>
+
+  <div *ngIf= "rol == 'Conductor'">
+    <button
+      mat-menu-item
+      (click)="drawer.toggle()"
+      style="cursor: pointer"
+      [routerLink]="['/Pedidos']"
+    >
+      <mat-icon>directions_car</mat-icon>
+      <span>Pedidos</span>
+    </button>
+  </div>
+    </mat-drawer>
+    <div class="example-sidenav">
+      <router-outlet visivility> </router-outlet>
+    </div>
+  </mat-drawer-container>
+</div>

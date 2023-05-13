@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './Paginas/login/login.component';
 import { ErrorTailorModule } from '@ngneat/error-tailor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AlumnosComponent } from './Paginas/alumnos/alumnos.component';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +16,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { BnNgIdleService } from 'bn-ng-idle';
+import { ErrorInterceptorService } from 'src/app/_share/error-interceptor.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+
+
 
 
 
@@ -30,6 +36,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   imports: [
     BrowserModule,
     MatToolbarModule,
+    MatSnackBarModule,
     MatSidenavModule,
     MatProgressBarModule,
     AppRoutingModule,
@@ -53,6 +60,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatTableModule,
   ],
   providers: [
+    BnNgIdleService,
+    {provide:HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi:true}
   ],
   bootstrap: [AppComponent]
 })
