@@ -7,18 +7,37 @@ import { LoginComponent } from './Paginas/login/login.component';
 import { ErrorTailorModule } from '@ngneat/error-tailor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AlumnosComponent } from './Paginas/alumnos/alumnos.component';
+import { MatTableModule } from '@angular/material/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AlumnosComponent
   ],
   imports: [
     BrowserModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatProgressBarModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    MatFormFieldModule,
+    MatMenuModule,
+    MatIconModule,
     HttpClientModule,
     ErrorTailorModule.forRoot({
       errors: {
@@ -30,6 +49,8 @@ import { HttpClientModule } from '@angular/common/http';
         }
       }
     }),
+    BrowserAnimationsModule,
+    MatTableModule,
   ],
   providers: [
   ],

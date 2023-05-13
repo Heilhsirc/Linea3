@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'LineaIII';
+
+  public rol : string | undefined;
+
+  constructor(){
+
+  }
+
+  ngOnInit(){
+    this.rol = sessionStorage.getItem('Rol') as string;
+  }
+
+  close(){
+
+  }
 }

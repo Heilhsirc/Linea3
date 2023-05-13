@@ -1,0 +1,71 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-sidenav {
+  padding: 20px;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-container button {
+  background: transparent;
+  border: none;
+}
+
+.example-container button :hover {
+  cursor: pointer;
+}
+
+.example-container button:active {
+  border-radius: 80%;
+  cursor: pointer;
+  background: #7f87b3;
+}
+
+.example-sidenav-content {
+  flex: 1;
+}
+.example-icon {
+  background: transparent;
+  border: none;
+}
+.example-icon:active {
+  background: rgb(63, 89, 181);
+  border-radius: 50px;
+}
+.mat-drawer-inner-container {
+  background: rosybrown;
+}
+.example-sidenav-content button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  background: transparent;
+}
+.example-sidenav-content button:hover {
+  cursor: pointer;
+  background: whitesmoke;
+}
+.example-sidenav-content button mat-icon {
+  margin-right: 20px;
+}
+.example-sidenav-content button span {
+  font-size: 21px;
+}
+
+.loader {
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+

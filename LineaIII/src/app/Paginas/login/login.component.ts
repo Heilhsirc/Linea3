@@ -35,7 +35,15 @@ export class LoginComponent implements OnInit {
   send(){
     this.loginSvc.login(((document.getElementById("usuario") as HTMLInputElement).value),
     ((document.getElementById("contrasena") as HTMLInputElement).value)).subscribe(data =>{
-      let log = data
+      if(data != null){
+        this.loginSvc.Auth(data.username as string ,data.password as string).subscribe(data =>{
+          sessionStorage.setItem('Token',data[0].token as string);
+          sessionStorage.setItem('Rol',data[0].rolid);
+          this.route.navigate(['/Alumnos']);
+        });
+      }else{
+        alert("Usuario o contrasena incorrecta");
+      }
     });
   }
 }
