@@ -21,6 +21,10 @@ import { ErrorInterceptorService } from 'src/app/_share/error-interceptor.servic
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NoauthComponent } from './Paginas/noauth/noauth.component';
 import { MatInputModule } from '@angular/material/input';
+import { CursosComponent } from './Paginas/cursos/cursos.component';
+import { RecuperarComponent } from './Paginas/recuperar/recuperar.component';
+import { AgregarComponent } from './Paginas/cursos/agregar/agregar.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -36,11 +40,15 @@ import { MatInputModule } from '@angular/material/input';
     AppComponent,
     LoginComponent,
     AlumnosComponent,
-    NoauthComponent
+    NoauthComponent,
+    CursosComponent,
+    RecuperarComponent,
+    AgregarComponent
   ],
   imports: [
     BrowserModule,
     MatToolbarModule,
+    MatButtonModule,
     MatInputModule,
     MatSnackBarModule,
     MatSidenavModule,

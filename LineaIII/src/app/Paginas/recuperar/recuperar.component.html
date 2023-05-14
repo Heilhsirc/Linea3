@@ -1,0 +1,22 @@
+<form [formGroup]="recuperarForm" (submit)="send()" errorTailor>
+    <div class="form">
+        <h1>█&nbsp;&nbsp;Recuperar Contraseña </h1>
+        <!--///////////////INPUT PLACA///////////////////-->
+        <div class="text">
+            <input type="text" id="email" formControlName="email" [controlErrorsTpl]="txtUserError" placeholder="email"   required autocomplete="off">  
+            <label for="email">Email</label>
+        </div>
+
+        <div class="text">
+            <button [disabled]="recuperarForm.invalid">INGRESAR</button>
+        </div>
+    </div>
+</form>
+
+<ng-template let-error let-text="text" #txtUserError>
+    <!--{{error | json}}-->
+    <div *ngIf="error?.required">
+        <b>Error</b>
+        <i>Este campo es requerido</i>
+    </div>
+</ng-template>

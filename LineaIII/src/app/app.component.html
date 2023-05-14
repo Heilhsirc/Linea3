@@ -34,50 +34,29 @@
     <div [hidden] = "flagProgresBar" class="loader">
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
-    <mat-drawer #drawer style="width: 100px" mode="side">
-      <div *ngIf="rol == '1'">
-      <button
-        mat-menu-item
-        (click)="drawer.toggle()"
-        style="cursor: pointer"
-        [routerLink]="['/Departamentos']"
-      >
-        <mat-icon>account_balance</mat-icon>
-        <span>Departamentos</span>
-      </button>
-    </div>
+    <mat-drawer #drawer style="width: 200px" mode="side">
+      <!--Boton para acceder a cursos por rol-->
     <div *ngIf="rol == '1'">
       <button
       mat-menu-item
       (click)="drawer.toggle()"
       style="cursor: pointer"
-      [routerLink]="['/Vehiculos']"
+      [routerLink]="['/Cursos']"
     >
-      <mat-icon>directions_car</mat-icon>
-      <span>Vehiculos</span>
+    <mat-icon>perm_identity</mat-icon>
+      <span>Cursos</span>
     </button>
   </div>
+  <!--Fin boton-->
   <div *ngIf="rol == '1'">
     <button
       mat-menu-item
       (click)="drawer.toggle()"
       style="cursor: pointer"
-      [routerLink]="['/Conductores']"
+      [routerLink]="['/Alumnos']"
     >
       <mat-icon>assignment_ind</mat-icon>
-      <span>Conductores</span>
-    </button>
-  </div>
-
-  <div *ngIf= "rol == 'Conductor'">
-    <button
-      mat-menu-item
-      (click)="drawer.toggle()"
-      style="cursor: pointer"
-      [routerLink]="['/Pedidos']"
-    >
-      <mat-icon>directions_car</mat-icon>
-      <span>Pedidos</span>
+      <span>Alumnos</span>
     </button>
   </div>
     </mat-drawer>

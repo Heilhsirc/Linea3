@@ -16,8 +16,18 @@
         <div class="text">
             <button [disabled]="loginForm.invalid">INGRESAR</button>
         </div>
+        <div class="text">
+            <button
+              style="cursor: pointer; width: 100%; "
+              [routerLink]="['/Recuperar']"
+            >Olvide la contraseña
+        </button>
+        </div>
     </div>
 </form>
+
+
+
 
 
 <ng-template let-error let-text="text" #txtUserError>

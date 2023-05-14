@@ -21,9 +21,9 @@ export class GuardianService {
           
           if(url.includes('Alumnos') && rol == '1')
             return true;
-          else if(url.includes('Registrar') && rol == '1')
+          else if(url.includes('Cursos') && rol == '1')
             return true;
-          else if(url.includes('Departamentos') && rol == '1')
+          else if(url.includes('AgregarCurso') && rol == '1')
             return true;
           else if(url.includes('Ciudades') && rol == 'Administrador')
             return true;  

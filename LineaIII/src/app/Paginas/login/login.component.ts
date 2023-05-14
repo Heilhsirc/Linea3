@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, 
     private route: Router, private loginSvc:LoginService,
     private interceptorSvc: InterceptorService,
-    private snackBar: MatSnackBar,) {
+    private snackBar: MatSnackBar) {
     this.loginForm = formBuilder.group({
       usuario : ['',[
         Validators.required,

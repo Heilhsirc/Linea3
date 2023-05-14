@@ -7,7 +7,7 @@ import { Alumno } from '../Modelos/alumno';
 })
 export class AlumnoService {
 
-  private url: string = 'http://3.131.252.96:8081/api/Alumnos/Listar';
+  private url: string = 'https://localhost:7033/api/Alumnos/Listar';
 
   constructor(private http: HttpClient) { }
 
