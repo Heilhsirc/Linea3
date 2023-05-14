@@ -14,16 +14,16 @@ export class GuardianService {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
       if(this.loginService.estaLogueado() == true) {
 
-        if(sessionStorage.getItem('online')){
+        if(sessionStorage.getItem('Token')){
 
           const rol = sessionStorage.getItem('Rol');
           const url: string = state.url;
           
-          if(url.includes('Alumnos') && rol == 'Administrador')
+          if(url.includes('Alumnos') && rol == '1')
             return true;
-          else if(url.includes('Registrar') && rol == 'Administrador')
+          else if(url.includes('Registrar') && rol == '1')
             return true;
-          else if(url.includes('Departamentos') && rol == 'Administrador')
+          else if(url.includes('Departamentos') && rol == '1')
             return true;
           else if(url.includes('Ciudades') && rol == 'Administrador')
             return true;  

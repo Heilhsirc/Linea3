@@ -33,7 +33,9 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
+    if(this.loginSvc.estaLogueado()){
+      this.route.navigate(['/Alumnos']);
+    }
   }
 
 

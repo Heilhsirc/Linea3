@@ -34,8 +34,8 @@
     <div [hidden] = "flagProgresBar" class="loader">
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
-    <mat-drawer #drawer style="width: 200px" mode="side">
-      <div *ngIf="rol == 'Administrador'">
+    <mat-drawer #drawer style="width: 100px" mode="side">
+      <div *ngIf="rol == '1'">
       <button
         mat-menu-item
         (click)="drawer.toggle()"
@@ -46,7 +46,7 @@
         <span>Departamentos</span>
       </button>
     </div>
-    <div *ngIf="rol == 'Administrador'">
+    <div *ngIf="rol == '1'">
       <button
       mat-menu-item
       (click)="drawer.toggle()"
@@ -57,7 +57,7 @@
       <span>Vehiculos</span>
     </button>
   </div>
-  <div *ngIf="rol == 'Administrador'">
+  <div *ngIf="rol == '1'">
     <button
       mat-menu-item
       (click)="drawer.toggle()"

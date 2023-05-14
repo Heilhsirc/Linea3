@@ -19,6 +19,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { ErrorInterceptorService } from 'src/app/_share/error-interceptor.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NoauthComponent } from './Paginas/noauth/noauth.component';
+import { MatInputModule } from '@angular/material/input';
+
+
 
 
 
@@ -31,11 +35,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   declarations: [
     AppComponent,
     LoginComponent,
-    AlumnosComponent
+    AlumnosComponent,
+    NoauthComponent
   ],
   imports: [
     BrowserModule,
     MatToolbarModule,
+    MatInputModule,
     MatSnackBarModule,
     MatSidenavModule,
     MatProgressBarModule,

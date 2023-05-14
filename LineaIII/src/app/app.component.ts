@@ -33,7 +33,7 @@ export class AppComponent {
       }
     this.rol = sessionStorage.getItem('Rol') as string;
 
-    this.bnIdle.startWatching(10).subscribe((isTimedOut: Boolean)=>{
+    this.bnIdle.startWatching(20).subscribe((isTimedOut: Boolean)=>{
       if(isTimedOut){
         if(this.loginSvc.estaLogueado()){
           this.close();
@@ -62,6 +62,6 @@ export class AppComponent {
     this.loginSvc.close();
       sessionStorage.removeItem('Token');
       this.interceptorSvc.logeed.next(false);
-      this.router.navigate(['']);
+      this.router.navigate(['/Login']);
   }
 }

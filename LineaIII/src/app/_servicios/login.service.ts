@@ -8,8 +8,8 @@ import { Security } from '../Modelos/security';
 })
 export class LoginService {
 
-  private url: string = 'https://localhost:7033/api/Login/';
-  private url2: String = 'https://localhost:7033/api/Authentication/Auth'
+  private url: string = 'http://3.131.252.96:8081/api/Login/';
+  private url2: String = 'http://3.131.252.96:8081/api/Authentication/Auth'
 
   constructor(private http: HttpClient) { }
 
