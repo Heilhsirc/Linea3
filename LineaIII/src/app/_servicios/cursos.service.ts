@@ -6,7 +6,7 @@ import { Curso } from '../Modelos/curso';
   providedIn: 'root'
 })
 export class CursosService {
-  private url: string = 'https://localhost:7033/api/Cursos/';
+  private url: string = 'https://3.131.252.96:8081/api/Cursos/';
 
   constructor(private http: HttpClient) { }
 
@@ -26,5 +26,39 @@ export class CursosService {
         headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8').
         set('Authorization', 'Bearer  ' + (sessionStorage.getItem('Token')))
     });
+  }
+
+  public eliminar(id:number){
+    return this.http.delete<any>(`${this.url}Eliminar/${id}`,{
+        headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8').
+        set('Authorization', 'Bearer  ' + (sessionStorage.getItem('Token')))
+    });
+  }
+
+  public buscar(id: number){
+    return this.http.get<Curso>(`${this.url}Buscar/${id}`,{
+      headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8').
+      set('Authorization', 'Bearer  ' + (sessionStorage.getItem('Token')))
+  });
+  }
+
+  public editar(curso: Curso, id: number){
+    const body = `{
+      "id":${id},
+      "nombre": "${curso.codigo}",
+      "codigo": "${curso.nombre}",
+      "creditos": "${curso.creditos}"
+      }`;
+    return this.http.post<any>(`${this.url}Modificar`, body, {
+        headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8').
+        set('Authorization', 'Bearer  ' + (sessionStorage.getItem('Token')))
+    });
+  }
+
+  public listaCursos(id: number){
+    return this.http.get<any>(`${this.url}BuscarXAlumno/${id}`,{
+      headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8').
+      set('Authorization', 'Bearer  ' + (sessionStorage.getItem('Token')))
+  });
   }
 }

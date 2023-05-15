@@ -11,7 +11,7 @@ import { AlumnoService } from 'src/app/_servicios/alumno.service';
 })
 export class AlumnosComponent {
 
-  displayedColumns: string[] = ['NIF', 'nombre', 'Apellido1', 'Apellido2'];
+  displayedColumns: string[] = ['NIF', 'nombre', 'Apellido1', 'Apellido2', 'Ver'];
   dataSource = new MatTableDataSource<Alumno>();
 
   constructor(public route: ActivatedRoute, private svcAlumno: AlumnoService){

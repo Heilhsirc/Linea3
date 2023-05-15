@@ -3,27 +3,27 @@
         
 
         <table class="demo">
-            <caption><h1>█&nbsp;&nbsp;REGISTRO CURSO</h1></caption>
+            <caption><h1>█&nbsp;&nbsp;EDITAR CURSO</h1></caption>
             <tbody>
             <tr>
                 <td>        
                     <!--///////////////INPUT NOMBRE///////////////////-->
                     <div class="text">
-                        <input type="text" id="nombre" formControlName="nombre" placeholder="Codigo"  required autocomplete="off">  
+                        <input type="text" [value]="eCurso.codigo" id="nombre" formControlName="nombre" placeholder="Codigo"   autocomplete="off">  
                         <!--<ng-container *ngTemplateOutlet="txtUserError;context:{error:registrarForm.get('placa').errors}"></ng-container>-->
                         <label for="nombre">Codigo</label>
                     </div></td>
                 <td>        
                     <!--///////////////INPUT APELLIDO///////////////////-->
                     <div class="text">
-                        <input type="text" id="apellido" formControlName="apellido" placeholder="Nombre"  required autocomplete="off">
+                        <input type="text" [value]="eCurso.nombre" id="apellido" formControlName="apellido" placeholder="Nombre"   autocomplete="off">
                         <!--<ng-container *ngTemplateOutlet="txtModeloError;context:{error:registrarForm.get('modelo').errors}"></ng-container>
                         --><label for="apellido">Nombre</label>
                     </div></td>
                 <td>        
                     <!--///////////////INPUT NICK///////////////////-->
                     <div class="text">
-                        <input type="text" id="nick" formControlName="nick" placeholder="creditos"  required autocomplete="off">
+                        <input type="text" [value]="eCurso.creditos" id="nick" formControlName="nick" placeholder="Creditos"   autocomplete="off">
                         <!--<ng-container *ngTemplateOutlet="txtModeloError;context:{error:registrarForm.get('modelo').errors}"></ng-container>
                         --><label for="nick">Creditos</label>
                     </div></td>
@@ -33,7 +33,7 @@
         </table>
  
         <div class="text">
-            <button [disabled]="registrarForm.invalid">REGISTRAR</button>
+            <button [disabled]="registrarForm.invalid">EDITAR</button>
         </div>
     </div>
 </form>

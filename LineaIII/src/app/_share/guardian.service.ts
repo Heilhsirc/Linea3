@@ -25,11 +25,11 @@ export class GuardianService {
             return true;
           else if(url.includes('AgregarCurso') && rol == '1')
             return true;
-          else if(url.includes('Ciudades') && rol == 'Administrador')
+          else if(url.includes('EditarCurso') && rol == '1')
             return true;  
-          else if(url.includes('Conductores') && rol == 'Administrador')
+          else if(url.includes('FichaCurso') && rol == '1')
             return true;
-          else if(url.includes('Pedidos') && rol == 'Conductor')
+          else if(url.includes('FichaUsuario') && rol == '1')
             return true;                                      
           else {
             this.router.navigate(['/unauth']);

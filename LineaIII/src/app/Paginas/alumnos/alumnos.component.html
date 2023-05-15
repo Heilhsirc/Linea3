@@ -1,3 +1,4 @@
+<div  [hidden]="route.children.length !== 0 " >
 <mat-form-field>
   <mat-label>Filtro</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
@@ -29,6 +30,14 @@
     <td mat-cell *matCellDef="let element"> {{element.apellido2}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="Ver">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        [routerLink]="['/Alumnos/FichaUsuario',element.id]"><mat-icon>search</mat-icon></button>
+    </td>
+  </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
@@ -37,3 +46,6 @@
     <td class="mat-cell" colspan="4">No se encontraron datos con ese criterio"{{input.value}}"</td>
   </tr>
 </table>
+</div>
+
+<router-outlet></router-outlet>

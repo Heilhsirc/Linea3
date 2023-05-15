@@ -3,12 +3,12 @@
         <h1>█&nbsp;&nbsp;Recuperar Contraseña </h1>
         <!--///////////////INPUT PLACA///////////////////-->
         <div class="text">
-            <input type="text" id="email" formControlName="email" [controlErrorsTpl]="txtUserError" placeholder="email"   required autocomplete="off">  
+            <input type="text" id="email" formControlName="email" [controlErrorsTpl]="txtUserError" placeholder="email"  autocomplete="off">  
             <label for="email">Email</label>
         </div>
 
         <div class="text">
-            <button [disabled]="recuperarForm.invalid">INGRESAR</button>
+            <button [disabled]="recuperarForm.invalid">RECUPERAR</button>
         </div>
     </div>
 </form>
@@ -17,6 +17,6 @@
     <!--{{error | json}}-->
     <div *ngIf="error?.required">
         <b>Error</b>
-        <i>Este campo es requerido</i>
+        <i>Esto no es un correo valido</i>
     </div>
 </ng-template>

@@ -25,6 +25,9 @@ import { CursosComponent } from './Paginas/cursos/cursos.component';
 import { RecuperarComponent } from './Paginas/recuperar/recuperar.component';
 import { AgregarComponent } from './Paginas/cursos/agregar/agregar.component';
 import { MatButtonModule } from '@angular/material/button';
+import { EditarCursoComponent } from './Paginas/cursos/editar-curso/editar-curso.component';
+import { FichaUsuarioComponent } from './Paginas/alumnos/ficha-usuario/ficha-usuario.component';
+import { FichaCursoComponent } from './Paginas/cursos/editar-curso/ficha-curso/ficha-curso.component';
 
 
 
@@ -43,7 +46,10 @@ import { MatButtonModule } from '@angular/material/button';
     NoauthComponent,
     CursosComponent,
     RecuperarComponent,
-    AgregarComponent
+    AgregarComponent,
+    EditarCursoComponent,
+    FichaUsuarioComponent,
+    FichaCursoComponent
   ],
   imports: [
     BrowserModule,

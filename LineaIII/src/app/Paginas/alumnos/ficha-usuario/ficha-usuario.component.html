@@ -1,0 +1,46 @@
+<div  [hidden]="route.children.length !== 0 " >
+  <div class="container">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <div class="box">
+      <div class="image">
+      </div>
+      <div class="name_job">David Chrish</div>
+      <div class="rating">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <p> Lorem ipsum dolor sitamet, stphen hawkin so adipisicing elit. Ratione disuja doloremque reiciendi nemo.</p>
+  
+    </div>
+  
+  
+    <div id="table">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+        <!-- Position Column -->
+        <ng-container matColumnDef="Nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Codigo">
+          <th mat-header-cell *matHeaderCellDef> Codigo </th>
+          <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Ver">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              [routerLink]="['FichaCurso',element.id]"><mat-icon>search</mat-icon></button>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
