@@ -29,6 +29,7 @@ import { EditarCursoComponent } from './Paginas/cursos/editar-curso/editar-curso
 import { FichaUsuarioComponent } from './Paginas/alumnos/ficha-usuario/ficha-usuario.component';
 import { FichaCursoComponent } from './Paginas/cursos/editar-curso/ficha-curso/ficha-curso.component';
 import { AgregarAlumnosComponent } from './Paginas/alumnos/agregar-alumnos/agregar-alumnos.component';
+import { EditarAlumnoComponent } from './Paginas/alumnos/editar-alumno/editar-alumno.component';
 
 
 
@@ -51,7 +52,8 @@ import { AgregarAlumnosComponent } from './Paginas/alumnos/agregar-alumnos/agreg
     EditarCursoComponent,
     FichaUsuarioComponent,
     FichaCursoComponent,
-    AgregarAlumnosComponent
+    AgregarAlumnosComponent,
+    EditarAlumnoComponent
   ],
   imports: [
     BrowserModule,

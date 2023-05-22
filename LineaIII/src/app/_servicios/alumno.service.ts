@@ -38,4 +38,11 @@ export class AlumnoService {
         set('Authorization', 'Bearer  ' + (sessionStorage.getItem('Token')))
     });
   }
+
+  public eliminar(id:number){
+    return this.http.delete<any>(`${this.url}/Eliminar/${id}`,{
+        headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8').
+        set('Authorization', 'Bearer  ' + (sessionStorage.getItem('Token')))
+    });
+  }
 }

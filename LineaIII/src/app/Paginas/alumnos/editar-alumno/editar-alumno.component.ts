@@ -1,26 +1,27 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Alumno } from 'src/app/Modelos/alumno';
 import { AlumnoService } from 'src/app/_servicios/alumno.service';
 import { InterceptorService } from 'src/app/_servicios/interceptor.service';
 
 @Component({
-  selector: 'app-agregar-alumnos',
-  templateUrl: './agregar-alumnos.component.html',
-  styleUrls: ['./agregar-alumnos.component.css']
+  selector: 'app-editar-alumno',
+  templateUrl: './editar-alumno.component.html',
+  styleUrls: ['./editar-alumno.component.css']
 })
-export class AgregarAlumnosComponent {
+export class EditarAlumnoComponent {
   public registrarForm:FormGroup;
   public list:Array<Alumno> | undefined;
-
+  public eAlumno: Alumno = new Alumno;
 
   constructor(private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private interceptorSvc: InterceptorService,
     private AlumnoSvc: AlumnoService,
-    public route: Router){
+    public route: Router,
+    public rutaActiva: ActivatedRoute ){
 
     this.registrarForm = formBuilder.group({
       nif : ['',[
@@ -42,6 +43,12 @@ export class AgregarAlumnosComponent {
   }
 
   ngOnInit(): void {
+    this.AlumnoSvc.buscar(this.rutaActiva.snapshot.params.id).subscribe(data => {
+      this.eAlumno.nif=data.nif;
+      this.eAlumno.nombre=data.nombre;
+      this.eAlumno.apellido1=data.apellido1;
+      this.eAlumno.apellido2=data.apellido2;
+    });
     this.listar();
 
     this.interceptorSvc.recargar.subscribe(data =>{

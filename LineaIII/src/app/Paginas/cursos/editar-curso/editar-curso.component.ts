@@ -21,7 +21,7 @@ export class EditarCursoComponent {
     private interceptorSvc: InterceptorService,
     private cursosSvc: CursosService,
     public route: Router,
-    private rutaActiva: ActivatedRoute){
+    private rutaActiva: ActivatedRoute ){
 
     this.registrarForm = formBuilder.group({
       nombre : ['',[

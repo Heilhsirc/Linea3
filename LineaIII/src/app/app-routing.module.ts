@@ -11,6 +11,7 @@ import { RecuperarComponent } from './Paginas/recuperar/recuperar.component';
 import { FichaUsuarioComponent } from './Paginas/alumnos/ficha-usuario/ficha-usuario.component';
 import { FichaCursoComponent } from './Paginas/cursos/editar-curso/ficha-curso/ficha-curso.component';
 import { AgregarAlumnosComponent } from './Paginas/alumnos/agregar-alumnos/agregar-alumnos.component';
+import { EditarAlumnoComponent } from './Paginas/alumnos/editar-alumno/editar-alumno.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path :'', component: LoginComponent},
   {path: 'Alumnos', component:AlumnosComponent, children: [
     {path: 'Registrar-Alumno', component: AgregarAlumnosComponent, canActivate: [GuardianService]},
+    {path: 'EditarAlumno/:id', component: EditarAlumnoComponent, canActivate: [GuardianService]},
     {path: 'FichaUsuario/:id', component: FichaUsuarioComponent, children: [
       {path: 'FichaCurso/:id', component: FichaCursoComponent, canActivate: [GuardianService]}
     ]}
