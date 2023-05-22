@@ -19,7 +19,7 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="['/perfil']">
+      <button mat-menu-item [routerLink]="['/Alumnos/FichaUsuario',userId]">
         <mat-icon>account_box</mat-icon>
         <span>Mi Perfil</span>
       </button>
@@ -48,6 +48,21 @@
     </button>
   </div>
   <!--Fin boton-->
+
+  <!--Boton para acceder a cursos por rol-->
+  <div *ngIf="rol == 'Estudiante'">
+    <button
+    mat-menu-item
+    (click)="drawer.toggle()"
+    style="cursor: pointer"
+    [routerLink]="['/Cursos']"
+  >
+  <mat-icon>perm_identity</mat-icon>
+    <span>Cursos</span>
+  </button>
+</div>
+<!--Fin boton-->
+
   <div *ngIf="rol == 'Administrador'">
     <button
       mat-menu-item

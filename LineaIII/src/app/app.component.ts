@@ -22,7 +22,7 @@ export class AppComponent {
   public logeado : Boolean = false;
   public flagProgresBar: Boolean = true;
   public flagToolbar:    boolean = true;
-
+  public userId: number | undefined;
   constructor(public loader: loaderService,
     private loginSvc: LoginService, public router : Router,
     private interceptorSvc: InterceptorService,
@@ -58,6 +58,10 @@ export class AppComponent {
 
     this.interceptorSvc.rol.subscribe(data => {
       this.rol = data;
+    });
+
+    this.interceptorSvc.userId.subscribe(data =>{
+      this.userId = data;
     });
     
   }

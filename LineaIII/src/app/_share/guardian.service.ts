@@ -24,6 +24,8 @@ export class GuardianService {
             return true;
           else if(url.includes('Cursos') && rol == 'Administrador')
             return true;
+          else if(url.includes('Cursos') && rol == 'Estudiante')
+            return true;
           else if(url.includes('AgregarCurso') && rol == 'Administrador')
             return true;
           else if(url.includes('EditarCurso') && rol == 'Administrador')
@@ -31,6 +33,8 @@ export class GuardianService {
           else if(url.includes('FichaCurso') && rol == 'Administrador')
             return true;
           else if(url.includes('FichaUsuario') && rol == 'Administrador')
+            return true;
+          else if(url.includes('FichaUsuario') && rol == 'Estudiante')
             return true;
           else if (url.includes('Registrar-Alumno') && rol == 'Administrador' )
              return true;                                      

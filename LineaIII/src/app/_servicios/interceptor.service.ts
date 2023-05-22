@@ -11,5 +11,6 @@ export class InterceptorService {
   public logeed = new Subject<Boolean>();
   public rol = new Subject<string>();
   public recargar = new Subject<Boolean>();
+  public userId = new Subject<number>();
   constructor() { }
 }

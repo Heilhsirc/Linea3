@@ -4,4 +4,6 @@ export class Usuario {
     password:string | undefined;
     nombre:string | undefined;
     email:string | undefined;
+    celular:string | undefined;
+    rolid: number | undefined;
 }

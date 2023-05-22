@@ -19,7 +19,8 @@ export class LoginService {
       "username": "${usuario}",
       "password": "${password}",
       "nombre": "",
-      "email": ""}`;
+      "email": "",
+      "celular": ""}`;
     return this.http.post<Usuario>(`${this.url}Login`, body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8') 
     });
@@ -41,7 +42,8 @@ export class LoginService {
       "username": "",
       "password": "",
       "nombre": "",
-      "email": ""}`;
+      "email": ""},
+      "celular": ""}`;
     return this.http.post<any>(`${this.url}Close`, body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8') 
     });

@@ -17,6 +17,7 @@ import { environment } from 'src/app/environments/environment';
 export class LoginComponent implements OnInit {
   public loginForm:FormGroup;
   public rol: string | undefined;
+  public userid: number | undefined;
   constructor(private formBuilder: FormBuilder, 
     private route: Router, private loginSvc:LoginService,
     private interceptorSvc: InterceptorService,
@@ -52,10 +53,18 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('Id',data[0].id);
           sessionStorage.setItem('Roli',CryptoJS.AES.encrypt(data[0].role.trim(), environment.CLAVE.trim()).toString());
           this.rol = CryptoJS.AES.decrypt(sessionStorage.getItem('Roli')!,environment.CLAVE).toString(CryptoJS.enc.Utf8).toString();
+          this.userid = data[0].id;
           this.interceptorSvc.logeed.next(true);
           this.interceptorSvc.toolBarReactiva.next(false);
           this.interceptorSvc.rol.next(this.rol as string);
-          this.route.navigate(['/Alumnos']);
+          this.interceptorSvc.userId.next(this.userid as number);
+          if(this.rol == 'Administrador'){
+            this.route.navigate(['/Alumnos']);
+          }
+          if(this.rol == 'Estudiante'){
+            this.route.navigate(['/Alumnos/FichaUsuario',this.userid])
+          }
+          
         });
       }else{
        this.openSnackBar("Usuario o contrasenia incorrecto");
