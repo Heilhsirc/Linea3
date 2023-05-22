@@ -1,18 +1,19 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Alumno } from '../Modelos/alumno';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnoService {
 
-  private url: string = 'https://3.131.252.96:8081/api/Alumnos/Listar';
+  private url: string = `${environment.HOST}/Alumnos`;
 
   constructor(private http: HttpClient) { }
 
   public listar(){
-    return this.http.get<Alumno[]>(`${this.url}`,{
+    return this.http.get<Alumno[]>(`${this.url}/listar`,{
         headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8').
         set('Authorization', 'Bearer  ' + (sessionStorage.getItem('Token')))
     });

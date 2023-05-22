@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Curso } from '../Modelos/curso';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CursosService {
-  private url: string = 'https://3.131.252.96:8081/api/Cursos/';
+  private url: string = `${environment.HOST}/Cursos/`;
 
   constructor(private http: HttpClient) { }
 

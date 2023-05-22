@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../Modelos/usuario';
 import { Security } from '../Modelos/security';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  private url: string = 'https://3.131.252.96:8081/api/Login/';
-  private url2: String = 'https://3.131.252.96:8081/api/Authentication/Auth'
+  private url: string = `${environment.HOST}/Login/`;
+  private url2: String = `${environment.HOST}/Authentication/Auth`
 
   constructor(private http: HttpClient) { }
 
