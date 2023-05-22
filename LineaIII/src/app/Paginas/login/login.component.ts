@@ -4,7 +4,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { LoginService } from 'src/app/_servicios/login.service'
 import { InterceptorService } from 'src/app/_servicios/interceptor.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import * as CryptoJS from 'crypto-js';
+import { environment } from 'src/app/environments/environment';
 
 
 
@@ -15,7 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
   public loginForm:FormGroup;
-  //public rol;
+  public rol: string | undefined;
   constructor(private formBuilder: FormBuilder, 
     private route: Router, private loginSvc:LoginService,
     private interceptorSvc: InterceptorService,
@@ -48,11 +49,14 @@ export class LoginComponent implements OnInit {
       if(data != null){
         this.loginSvc.Auth(data.username as string ,data.password as string).subscribe(data =>{
           sessionStorage.setItem('Token',data[0].token as string);
-          sessionStorage.setItem('Rol',data[0].rolid);
           sessionStorage.setItem('Id',data[0].id);
+          sessionStorage.setItem('Roli',CryptoJS.AES.encrypt(data[0].role.trim(), environment.CLAVE.trim()).toString());
+          this.rol = CryptoJS.AES.decrypt(sessionStorage.getItem('Roli')!,environment.CLAVE).toString(CryptoJS.enc.Utf8).toString();
+          this.interceptorSvc.logeed.next(true);
+          this.interceptorSvc.toolBarReactiva.next(false);
+          this.interceptorSvc.rol.next(this.rol as string);
           this.route.navigate(['/Alumnos']);
         });
-        this.interceptorSvc.logeed.next(true);
       }else{
        this.openSnackBar("Usuario o contrasenia incorrecto");
       }

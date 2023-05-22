@@ -26,7 +26,6 @@ export class FichaUsuarioComponent {
   ngOnInit(): void {
     this.svcCurso.listaCursos(this.route.snapshot.params.id).subscribe(respuestaLista=>{
       (this.dataSource.data=respuestaLista);
-      console.log(this.dataSource)
     });
     this.svcAlumno.buscar(this.route.snapshot.params.id).subscribe(response =>{
       (this.alumnoInformation = response)

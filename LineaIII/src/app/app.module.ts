@@ -39,7 +39,6 @@ import { EditarAlumnoComponent } from './Paginas/alumnos/editar-alumno/editar-al
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

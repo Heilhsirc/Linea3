@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { InterceptorService } from './_servicios/interceptor.service';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { loaderService } from './_servicios/loader.service';
-
+import { environment } from './environments/environment';
+import * as CryptoJS from 'crypto-js';
 
 
 @Component({
@@ -14,6 +15,8 @@ import { loaderService } from './_servicios/loader.service';
 })
 export class AppComponent {
   title = 'LineaIII';
+  idleState = 'Not started.';
+  timedOut = false;
 
   public rol : string | undefined;
   public logeado : Boolean = false;
@@ -30,9 +33,9 @@ export class AppComponent {
   ngOnInit(){
     if(this.logeado){
       this.logeado=this.loginSvc.estaLogueado();
+      this.rol = CryptoJS.AES.decrypt(sessionStorage.getItem('Roli')!,environment.CLAVE).toString(CryptoJS.enc.Utf8);
       }
-    this.rol = sessionStorage.getItem('Rol') as string;
-
+      
     this.bnIdle.startWatching(20).subscribe((isTimedOut: Boolean)=>{
       if(isTimedOut){
         if(this.loginSvc.estaLogueado()){
@@ -40,6 +43,7 @@ export class AppComponent {
         }
       }
     });
+
     this.loader.progresBarReactive.subscribe(data =>{
       this.flagProgresBar = data;
     });
@@ -55,12 +59,12 @@ export class AppComponent {
     this.interceptorSvc.rol.subscribe(data => {
       this.rol = data;
     });
-
+    
   }
 
   close(){
     this.loginSvc.close();
-      sessionStorage.removeItem('Token');
+      sessionStorage.clear();
       this.interceptorSvc.logeed.next(false);
       this.router.navigate(['/Login']);
   }
