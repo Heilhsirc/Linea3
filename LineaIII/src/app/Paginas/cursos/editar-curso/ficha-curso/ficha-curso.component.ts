@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Curso } from 'src/app/Modelos/curso';
 import { CursosService } from 'src/app/_servicios/cursos.service';
 
 @Component({
@@ -8,12 +10,16 @@ import { CursosService } from 'src/app/_servicios/cursos.service';
 })
 export class FichaCursoComponent {
 
-  constructor(private cursosSvc: CursosService){
+  public cursoInformation : Curso = new Curso;
+  constructor(private cursosSvc: CursosService,
+              public route: ActivatedRoute){
 
   }
 
   ngOnInit(): void {
-
+    this.cursosSvc.buscar(this.route.snapshot.params.id).subscribe(data =>{
+      (this.cursoInformation = data)
+    });
   }
 
 }

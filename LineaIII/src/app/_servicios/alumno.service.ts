@@ -18,4 +18,11 @@ export class AlumnoService {
         set('Authorization', 'Bearer  ' + (sessionStorage.getItem('Token')))
     });
 }
+
+  public buscar(id: number){
+    return this.http.get<Alumno>(`${this.url}/buscar/${id}`,{
+      headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8').
+      set('Authorization', 'Bearer  ' + (sessionStorage.getItem('Token')))
+  });
+  }
 }
