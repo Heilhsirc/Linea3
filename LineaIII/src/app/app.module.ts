@@ -28,6 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { EditarCursoComponent } from './Paginas/cursos/editar-curso/editar-curso.component';
 import { FichaUsuarioComponent } from './Paginas/alumnos/ficha-usuario/ficha-usuario.component';
 import { FichaCursoComponent } from './Paginas/cursos/editar-curso/ficha-curso/ficha-curso.component';
+import { AgregarAlumnosComponent } from './Paginas/alumnos/agregar-alumnos/agregar-alumnos.component';
 
 
 
@@ -49,7 +50,8 @@ import { FichaCursoComponent } from './Paginas/cursos/editar-curso/ficha-curso/f
     AgregarComponent,
     EditarCursoComponent,
     FichaUsuarioComponent,
-    FichaCursoComponent
+    FichaCursoComponent,
+    AgregarAlumnosComponent
   ],
   imports: [
     BrowserModule,

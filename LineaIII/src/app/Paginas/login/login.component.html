@@ -9,7 +9,7 @@
 
         <!--///////////////INPUT MODELO///////////////////-->
         <div class="text">
-            <input type="password" id="contrasena" formControlName="contrasena" [controlErrorsTpl]="txtUserError" required autocomplete="off">
+            <input type="password" id="contrasena" formControlName="contrasena" [controlErrorsTpl]="txtPassError" required autocomplete="off">
             <label for="constrasena">Contraseña</label>
         </div>
 
@@ -31,6 +31,32 @@
 
 
 <ng-template let-error let-text="text" #txtUserError>
+    <!--{{error | json}}-->
+    <div *ngIf="error?.required">
+        <b>Error</b>
+        <i>Este campo es requerido</i>
+    </div>
+<div *ngIf="error?.minlength">
+    <b>Error</b>
+    <i>No cumples con los caracteres minimos</i>
+    <br>
+    <i>tienes {{error?.minlength.actualLength}}</i>
+    <i> se esperan {{error?.minlength.requiredLength}}</i>
+</div>
+<div *ngIf="error?.maxlength">
+    <b>Error</b>
+    <i>No cumples con los caracteres maximos</i>
+    <br>
+    <i>tienes {{error?.maxlength.actualLength}}</i>
+    <i> se esperan {{error?.maxlength.requiredLength}}</i>
+</div>
+<div *ngIf="error?.pattern">
+    <b>Error</b>
+    <i>Introduce un usuario valido</i>
+</div>
+</ng-template>
+
+<ng-template let-error let-text="text" #txtPassError>
     <!--{{error | json}}-->
     <div *ngIf="error?.required">
         <b>Error</b>

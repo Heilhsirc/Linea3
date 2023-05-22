@@ -30,7 +30,9 @@ export class GuardianService {
           else if(url.includes('FichaCurso') && rol == '1')
             return true;
           else if(url.includes('FichaUsuario') && rol == '1')
-            return true;                                      
+            return true;
+          else if (url.includes('Registrar-Alumno') && rol == '1')
+             return true;                                      
           else {
             this.router.navigate(['/unauth']);
             return false;

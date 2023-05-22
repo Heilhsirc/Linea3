@@ -1,0 +1,74 @@
+<form [formGroup]="registrarForm" (submit)="send()" errorTailor>
+    <div class="form">
+        
+
+        <table class="demo">
+            <caption><h1>█&nbsp;&nbsp;REGISTRO ALUMNO</h1></caption>
+            <tbody>
+            <tr>
+                <td>        
+                    <!--///////////////INPUT NIF///////////////////-->
+                    <div class="text">
+                        <input type="text" id="nif" formControlName="nif" placeholder="nif"  required autocomplete="off">  
+                        <!--<ng-container *ngTemplateOutlet="txtUserError;context:{error:registrarForm.get('placa').errors}"></ng-container>-->
+                        <label for="nombre">Nif</label>
+                    </div></td>
+                <td>        
+                    <!--///////////////INPUT NOMBRE///////////////////-->
+                    <div class="text">
+                        <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre"  required autocomplete="off">
+                        <!--<ng-container *ngTemplateOutlet="txtModeloError;context:{error:registrarForm.get('modelo').errors}"></ng-container>
+                        --><label for="apellido">Nombre</label>
+                    </div></td>
+                <td>        
+                    <!--///////////////INPUT APELLIDO1///////////////////-->
+                    <div class="text">
+                        <input type="text" id="apellido1" formControlName="apellido1" placeholder="apellido1"  required autocomplete="off">
+                        <!--<ng-container *ngTemplateOutlet="txtModeloError;context:{error:registrarForm.get('modelo').errors}"></ng-container>
+                        --><label for="nick">Apellido1</label>
+                    </div></td>
+                    <td>        
+                        <!--///////////////INPUT APELLIDO2///////////////////-->
+                        <div class="text">
+                            <input type="text" id="apellido2" formControlName="apellido2" placeholder="apellido2"  required autocomplete="off">
+                            <!--<ng-container *ngTemplateOutlet="txtModeloError;context:{error:registrarForm.get('modelo').errors}"></ng-container>
+                            --><label for="nick">Apellido2</label>
+                        </div></td>
+            </tr>
+            <tr>
+            </tbody>
+        </table>
+ 
+        <div class="text">
+            <button [disabled]="registrarForm.invalid">REGISTRAR</button>
+        </div>
+    </div>
+</form>
+
+<!--<ng-template let-error="error" #txtUserError>
+    <!s--{{error | json}}-s->
+    <div *ngIf="error?.required&&registrarForm.touched">
+        <b>Error</b>
+        <i>Este campo es requerido</i>
+    </div>
+    <div *ngIf="error?.pattern">
+        <b>Error</b>
+        <i>La placa debe llevar -</i>
+    </div>
+</ng-template>
+
+<ng-template let-error="error" #txtModeloError>
+    <!s--{{error | json}}-s->
+    <div *ngIf="error?.minlength">
+        <b>Error</b>
+        <i>Se esperan minimo 4 numeros</i>
+    </div>
+    <div *ngIf="error?.required&&registrarForm.touched">
+        <b>Error</b>
+        <i>Este campo es requerido</i>
+    </div>
+    <div *ngIf="error?.pattern">
+        <b>Error</b>
+        <i>Se aceptan unicamente numeros</i>
+    </div>
+</ng-template>-->

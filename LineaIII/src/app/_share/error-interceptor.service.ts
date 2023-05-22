@@ -26,22 +26,22 @@ export class ErrorInterceptorService {
       }
     })).pipe(catchError((err) => {
           console.log(err);
-          if(err.error.message == "400 BAD_REQUEST"){
-            this.openSnackBar("---Relación conductor y vehículo ya está registrada");
-          }else if(err.status == 400 && err.error.error == "invalid_grant") { 
-                this.openSnackBar("Usuario o Contraseña invalidos");
-          }else if(err.status == 400) { 
-            this.openSnackBar("Usuario o contrasenia incorrecta");
-          }else if(err.error.status == 404) {
+          if(err.error.message == "Usuario o contrasenia incorrecta"){
+            this.openSnackBar(err.error.message);
+          }else if(err.error.message == "Alumno no existe") {
                 this.openSnackBar(err.error.message);
-          } else if(err.error.status == 405) {
+          } else if(err.error.message == "Error al agregar, el nif ya esta registrado") {
                 this.openSnackBar(err.error.message);
-                this.router.navigate(['/error']);
-          } else if(err.error.status == 415) {
+          } else if(err.error.message == "Error al agregar, username ya esta en uso") {
                 this.openSnackBar(err.error.message);
-                this.router.navigate(['/error']);
-          } else  if(err.error.status == 500) {
-                this.router.navigate(['/error']);
+          } else  if(err.error.message == "Usuario no existe") {
+                this.openSnackBar(err.error.message);
+          }else if (err.error.message == "Curso no existe"){
+                this.openSnackBar(err.error.message);
+          }else if (err.error.message == "Error al agregar el curso, el codigo del curso ya esta registrado"){
+            this.openSnackBar(err.error.message);
+          }else if(err.error.message=="Error al eliminar el curso"){
+            this.openSnackBar(err.error.message);
           }
           return EMPTY;
     }));
@@ -50,7 +50,7 @@ export class ErrorInterceptorService {
 
   private openSnackBar(mensaje: string) {
     this.snackBar.open(mensaje, 'Información', {
-      duration: 2000,
+      duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });

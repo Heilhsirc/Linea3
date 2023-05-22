@@ -25,4 +25,17 @@ export class AlumnoService {
       set('Authorization', 'Bearer  ' + (sessionStorage.getItem('Token')))
   });
   }
+
+  public guardar(alumno: Alumno){
+    const body = `{
+      "nif": "${alumno.nif}",
+      "nombre": "${alumno.nombre}",
+      "apellido1": "${alumno.apellido1}",
+      "apellido2": "${alumno.apellido2}"
+      }`;
+    return this.http.put<any>(`${this.url}/Agregar`, body, {
+        headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8').
+        set('Authorization', 'Bearer  ' + (sessionStorage.getItem('Token')))
+    });
+  }
 }
