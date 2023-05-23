@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         this.loginSvc.Auth(data.username as string ,data.password as string).subscribe(data =>{
           sessionStorage.setItem('Token',data[0].token as string);
           sessionStorage.setItem('Id',data[0].id);
-          sessionStorage.setItem('Roli',CryptoJS.AES.encrypt(data[0].role.trim(), environment.CLAVE.trim()).toString());
+          sessionStorage.setItem('Roli',CryptoJS.AES.encrypt(data[0].role ||'', environment.CLAVE.trim()).toString());
           this.rol = CryptoJS.AES.decrypt(sessionStorage.getItem('Roli')!,environment.CLAVE).toString(CryptoJS.enc.Utf8).toString();
           this.userid = data[0].id;
           this.interceptorSvc.logeed.next(true);

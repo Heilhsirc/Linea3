@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../Modelos/usuario';
-import { Security } from '../Modelos/security';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -42,7 +41,7 @@ export class LoginService {
       "username": "",
       "password": "",
       "nombre": "",
-      "email": ""},
+      "email": "",
       "celular": ""}`;
     return this.http.post<any>(`${this.url}Close`, body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8') 
@@ -54,11 +53,32 @@ export class LoginService {
     return !!tk;
   }
 
-  public recuperar(email: string) {
+  public recuperar() {
+    const body = `form-data=clave&usuario=${environment.USER}&clave=${environment.PASS}`;
+        return this.http.post<any>(`${environment.RECUPERAR}`, body, {
+            headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8').
+            set('Authorization', 'Bearer' + btoa(`${environment.USER}:${environment.PASS}`))
+        });
+  }
+
+  public buscar(correo : string){
     const body = `{
-      "Correo": "${email}"}`;
+      "username": "",
+      "password": "",
+      "nombre": "",
+      "correo": "${correo}",
+      "celular": ""
+  }`;
     return this.http.post<any>(`${this.url}Recuperar`, body, {
-      headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8')
+        headers: new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8') 
     });
+  }
+
+  public enviar(celular:string,mensaje:string) {
+    const body = `form-data=mensaje&numero=${celular}&mensaje=${mensaje}`;
+        return this.http.post<any>(`${environment.RECUCLAVE}`, body, {
+            headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8').
+            set('Authorization', 'Bearer ' + (sessionStorage.getItem('Rtok')))
+        });
   }
 }
