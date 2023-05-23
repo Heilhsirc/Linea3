@@ -1,8 +1,8 @@
 
 export const environment = {
     production: false,
-    //HOST:'https://hyslinea3prof.tech:8081/api',
-    HOST:'https://localhost:7033/api',
+    HOST:'https://hyslinea3prof.tech:8081/api',
+    //HOST:'https://localhost:7033/api',
     CLAVE: 'huesosysky',
     USER: 'test@toolsinventor.com',
     PASS: 'test2022tools09inventor55',

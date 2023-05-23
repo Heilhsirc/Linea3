@@ -5,7 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Curso } from 'src/app/Modelos/curso';
 import { CursosService } from 'src/app/_servicios/cursos.service';
 import { InterceptorService } from 'src/app/_servicios/interceptor.service';
-
+import { environment } from 'src/app/environments/environment';
+import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
@@ -16,13 +17,14 @@ export class CursosComponent {
   displayedColumns: string[] = ['Codigo', 'Nombre', 'Creditos', 'Editar', 'Eliminar', 'Ver'];
   dataSource = new MatTableDataSource<Curso>();
   public list:Array<Curso> | undefined;
-
+  public rol : string |undefined;
   constructor(public route: ActivatedRoute, private svcCurso: CursosService,
     private snackBar: MatSnackBar, private interceptorSvc: InterceptorService){
 
   }
 
   ngOnInit(): void {
+    this.rol = CryptoJS.AES.decrypt(sessionStorage.getItem('Roli')!,environment.CLAVE).toString(CryptoJS.enc.Utf8);
     this.listar();
     this.interceptorSvc.recargar.subscribe(data =>{
       this.listar();
